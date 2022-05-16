@@ -1,3 +1,6 @@
+#    Махмутов Галим Сагитович
+#    makhmutov.gs@gmail.com
+#    +7-926-402-57-54
 import numpy as np
 from matplotlib import pyplot as plt
 

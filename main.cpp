@@ -1,3 +1,8 @@
+/*
+    Махмутов Галим Сагитович
+    makhmutov.gs@gmail.com
+    +7-926-402-57-54
+*/
 #include <vector>
 #include <functional>
 #include <exception>
@@ -6,6 +11,7 @@
 
 using Vec = std::vector<double>;
 
+// Перегрузки операторов для удобства операций с массивами
 Vec operator*(double scalar, const Vec& array)
 {
     Vec result(array.size());
@@ -33,6 +39,7 @@ Vec operator+(const Vec& lhs, const Vec& rhs)
     return result;
 }
 
+// Заготовка для класса решателя ОДУ
 class OdeSolver
 {
 public:
@@ -51,6 +58,7 @@ public:
         _updateGrid();
     }
 
+    // Используется метод Рунге-Кутты четвертого порядка, однако в классе можно реализовать и другие методы
     Vec rk4()
     {
         std::vector<Vec> y(_grid.size());
@@ -107,7 +115,8 @@ private:
 
 };
 
-
+// Функция расчета правой части системы ОДУ абстрагирована от класса
+// Описание составления системы ОДУ представлено в readme
 Vec rightHandFunction(double x, const Vec& y)
 {
     Vec result(5);
@@ -141,6 +150,7 @@ int main()
 
     Vec result = odeSolver.rk4();
 
+    // Результат сохраняется в файл для последующего удобного построения графиков в Python
     saveToFile(odeSolver.getGrid(), result, "cpp_results.txt");
 
     return 0;
